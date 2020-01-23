@@ -1,0 +1,211 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.celerifere_test2"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="28" />
+9-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:4:5-67
+11-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:4:22-64
+12    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+12-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:5:5-77
+12-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:5:22-75
+13
+14    <!-- OPTIONAL PERMISSIONS, REMOVE WHATEVER YOU DO NOT NEED -->
+15    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
+15-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:8:5-75
+15-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:8:22-72
+16    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
+16-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:9:5-80
+16-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:9:22-77
+17    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+17-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:10:5-75
+17-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:10:22-72
+18    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+18-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:11:5-74
+18-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:11:22-71
+19    <uses-permission android:name="android.permission.VIBRATE" />
+19-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:12:5-66
+19-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:12:22-63
+20    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+20-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:13:5-80
+20-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:13:22-77
+21
+22    <!-- These require runtime permissions on M -->
+23    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+23-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:16:5-81
+23-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:16:22-78
+24    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+24-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:17:5-79
+24-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:17:22-76
+25    <uses-permission android:name="android.permission.CAMERA" />
+25-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:18:5-65
+25-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:18:22-62
+26    <uses-permission android:name="android.permission.READ_CONTACTS" />
+26-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:19:5-72
+26-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:19:22-69
+27    <uses-permission android:name="android.permission.READ_CALENDAR" />
+27-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:20:5-72
+27-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:20:22-69
+28    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+28-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:21:5-73
+28-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:21:22-70
+29    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+29-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:22:5-80
+29-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:22:22-77
+30    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+30-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:23:5-71
+30-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:23:22-68
+31    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+31-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:24:5-81
+31-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:24:22-78
+32    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+32-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:25:5-73
+32-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:25:22-70
+33    //uses-feature android:name="android.hardware.location.gps" /> //RAJOUT
+34    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+34-->[:react-native-geolocation-service] C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\node_modules\react-native-geolocation-service\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-79
+34-->[:react-native-geolocation-service] C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\node_modules\react-native-geolocation-service\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:10:22-76
+35    <uses-permission android:name="android.permission.STORAGE" />
+35-->[:expo-file-system] C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\node_modules\expo-file-system\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:5-66
+35-->[:expo-file-system] C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\node_modules\expo-file-system\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:22-63
+36    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+36-->[:expo-location] C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\node_modules\expo-location\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:5-77
+36-->[:expo-location] C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\node_modules\expo-location\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:22-74
+37
+38    <uses-feature
+38-->[com.google.android.gms:play-services-maps:16.1.0] C:\Users\Gerbil\.gradle\caches\transforms-2\files-2.1\0bc9f2762d6ed5c24c59644ecaed0ea9\jetified-play-services-maps-16.1.0\AndroidManifest.xml:26:5-28:35
+39        android:glEsVersion="0x00020000"
+39-->[com.google.android.gms:play-services-maps:16.1.0] C:\Users\Gerbil\.gradle\caches\transforms-2\files-2.1\0bc9f2762d6ed5c24c59644ecaed0ea9\jetified-play-services-maps-16.1.0\AndroidManifest.xml:27:9-41
+40        android:required="true" />
+40-->[com.google.android.gms:play-services-maps:16.1.0] C:\Users\Gerbil\.gradle\caches\transforms-2\files-2.1\0bc9f2762d6ed5c24c59644ecaed0ea9\jetified-play-services-maps-16.1.0\AndroidManifest.xml:28:9-32
+41
+42    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+42-->[io.nlopez.smartlocation:library:3.2.11] C:\Users\Gerbil\.gradle\caches\transforms-2\files-2.1\7eead14b7f7321b5e79e70a869625545\jetified-library-3.2.11\AndroidManifest.xml:15:5-98
+42-->[io.nlopez.smartlocation:library:3.2.11] C:\Users\Gerbil\.gradle\caches\transforms-2\files-2.1\7eead14b7f7321b5e79e70a869625545\jetified-library-3.2.11\AndroidManifest.xml:15:22-95
+43    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" /> <!-- END OPTIONAL PERMISSIONS -->
+43-->[io.nlopez.smartlocation:library:3.2.11] C:\Users\Gerbil\.gradle\caches\transforms-2\files-2.1\7eead14b7f7321b5e79e70a869625545\jetified-library-3.2.11\AndroidManifest.xml:16:5-94
+43-->[io.nlopez.smartlocation:library:3.2.11] C:\Users\Gerbil\.gradle\caches\transforms-2\files-2.1\7eead14b7f7321b5e79e70a869625545\jetified-library-3.2.11\AndroidManifest.xml:16:22-91
+44    <application
+44-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:29:5-50:19
+45        android:name="com.celerifere_test2.MainApplication"
+45-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:30:7-38
+46        android:allowBackup="false"
+46-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:34:7-34
+47        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+47-->[androidx.core:core:1.1.0] C:\Users\Gerbil\.gradle\caches\transforms-2\files-2.1\e9dab9c67c1ee3668e0bbf86c6d8cbd8\core-1.1.0\AndroidManifest.xml:24:18-86
+48        android:debuggable="true"
+49        android:icon="@mipmap/ic_launcher"
+49-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:32:7-41
+50        android:label="@string/app_name"
+50-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:31:7-39
+51        android:roundIcon="@mipmap/ic_launcher_round"
+51-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:33:7-52
+52        android:theme="@style/AppTheme" >
+52-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:35:7-38
+53        <activity
+53-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:36:7-45:18
+54            android:name="com.celerifere_test2.MainActivity"
+54-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:37:9-37
+55            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+55-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:39:9-79
+56            android:label="@string/app_name"
+56-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:38:9-41
+57            android:windowSoftInputMode="adjustResize" >
+57-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:40:9-51
+58            <intent-filter>
+58-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:41:9-44:25
+59                <action android:name="android.intent.action.MAIN" />
+59-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:42:13-65
+59-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:42:21-62
+60
+61                <category android:name="android.intent.category.LAUNCHER" />
+61-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:43:13-73
+61-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:43:23-70
+62            </intent-filter>
+63        </activity>
+64        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+64-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:46:7-84
+64-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:46:17-81
+65
+66        <meta-data
+66-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:47:7-49:68
+67            android:name="com.google.android.geo.API_KEY"
+67-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:48:11-56
+68            android:value="AIzaSyCO7AqtE0nyLSvL9gOdZVPlpuQ-Lq8i-Hs" />
+68-->C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\android\app\src\main\AndroidManifest.xml:49:11-66
+69
+70        <provider
+70-->[:expo-file-system] C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\node_modules\expo-file-system\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:18:9-27:20
+71            android:name="expo.modules.filesystem.FileSystemFileProvider"
+71-->[:expo-file-system] C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\node_modules\expo-file-system\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:19:13-74
+72            android:authorities="com.celerifere_test2.FileSystemFileProvider"
+72-->[:expo-file-system] C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\node_modules\expo-file-system\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:20:13-74
+73            android:exported="false"
+73-->[:expo-file-system] C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\node_modules\expo-file-system\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:21:13-37
+74            android:grantUriPermissions="true" >
+74-->[:expo-file-system] C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\node_modules\expo-file-system\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:22:13-47
+75            <meta-data
+75-->[:expo-file-system] C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\node_modules\expo-file-system\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:24:13-26:70
+76                android:name="android.support.FILE_PROVIDER_PATHS"
+76-->[:expo-file-system] C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\node_modules\expo-file-system\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:25:17-67
+77                android:resource="@xml/file_system_provider_paths" />
+77-->[:expo-file-system] C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\node_modules\expo-file-system\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:26:17-67
+78        </provider>
+79
+80        <service
+80-->[:expo-location] C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\node_modules\expo-location\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:9-18:40
+81            android:name="expo.modules.location.services.LocationTaskService"
+81-->[:expo-location] C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\node_modules\expo-location\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:13-78
+82            android:exported="false" /> <!-- Needs to be explicitly declared on P+ -->
+82-->[:expo-location] C:\Users\Gerbil\Documents\Polytech\Ptrans\Celerifere_test2\node_modules\expo-location\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:18:13-37
+83        <uses-library
+83-->[com.google.android.gms:play-services-maps:16.1.0] C:\Users\Gerbil\.gradle\caches\transforms-2\files-2.1\0bc9f2762d6ed5c24c59644ecaed0ea9\jetified-play-services-maps-16.1.0\AndroidManifest.xml:33:9-35:40
+84            android:name="org.apache.http.legacy"
+84-->[com.google.android.gms:play-services-maps:16.1.0] C:\Users\Gerbil\.gradle\caches\transforms-2\files-2.1\0bc9f2762d6ed5c24c59644ecaed0ea9\jetified-play-services-maps-16.1.0\AndroidManifest.xml:34:13-50
+85            android:required="false" />
+85-->[com.google.android.gms:play-services-maps:16.1.0] C:\Users\Gerbil\.gradle\caches\transforms-2\files-2.1\0bc9f2762d6ed5c24c59644ecaed0ea9\jetified-play-services-maps-16.1.0\AndroidManifest.xml:35:13-37
+86
+87        <activity
+87-->[com.google.android.gms:play-services-base:16.1.0] C:\Users\Gerbil\.gradle\caches\transforms-2\files-2.1\e4c2310f1ce02b7cf24fb72288bc11ff\jetified-play-services-base-16.1.0\AndroidManifest.xml:23:9-26:75
+88            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+88-->[com.google.android.gms:play-services-base:16.1.0] C:\Users\Gerbil\.gradle\caches\transforms-2\files-2.1\e4c2310f1ce02b7cf24fb72288bc11ff\jetified-play-services-base-16.1.0\AndroidManifest.xml:24:13-79
+89            android:exported="false"
+89-->[com.google.android.gms:play-services-base:16.1.0] C:\Users\Gerbil\.gradle\caches\transforms-2\files-2.1\e4c2310f1ce02b7cf24fb72288bc11ff\jetified-play-services-base-16.1.0\AndroidManifest.xml:25:13-37
+90            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+90-->[com.google.android.gms:play-services-base:16.1.0] C:\Users\Gerbil\.gradle\caches\transforms-2\files-2.1\e4c2310f1ce02b7cf24fb72288bc11ff\jetified-play-services-base-16.1.0\AndroidManifest.xml:26:13-72
+91
+92        <meta-data
+92-->[com.google.android.gms:play-services-basement:16.2.0] C:\Users\Gerbil\.gradle\caches\transforms-2\files-2.1\9c4851d201dbfc16e67bc270b2e41b7a\jetified-play-services-basement-16.2.0\AndroidManifest.xml:23:9-25:69
+93            android:name="com.google.android.gms.version"
+93-->[com.google.android.gms:play-services-basement:16.2.0] C:\Users\Gerbil\.gradle\caches\transforms-2\files-2.1\9c4851d201dbfc16e67bc270b2e41b7a\jetified-play-services-basement-16.2.0\AndroidManifest.xml:24:13-58
+94            android:value="@integer/google_play_services_version" />
+94-->[com.google.android.gms:play-services-basement:16.2.0] C:\Users\Gerbil\.gradle\caches\transforms-2\files-2.1\9c4851d201dbfc16e67bc270b2e41b7a\jetified-play-services-basement-16.2.0\AndroidManifest.xml:25:13-66
+95
+96        <service
+96-->[io.nlopez.smartlocation:library:3.2.11] C:\Users\Gerbil\.gradle\caches\transforms-2\files-2.1\7eead14b7f7321b5e79e70a869625545\jetified-library-3.2.11\AndroidManifest.xml:19:9-21:40
+97            android:name="io.nlopez.smartlocation.activity.providers.ActivityGooglePlayServicesProvider$ActivityRecognitionService"
+97-->[io.nlopez.smartlocation:library:3.2.11] C:\Users\Gerbil\.gradle\caches\transforms-2\files-2.1\7eead14b7f7321b5e79e70a869625545\jetified-library-3.2.11\AndroidManifest.xml:20:13-132
+98            android:exported="false" />
+98-->[io.nlopez.smartlocation:library:3.2.11] C:\Users\Gerbil\.gradle\caches\transforms-2\files-2.1\7eead14b7f7321b5e79e70a869625545\jetified-library-3.2.11\AndroidManifest.xml:21:13-37
+99        <service
+99-->[io.nlopez.smartlocation:library:3.2.11] C:\Users\Gerbil\.gradle\caches\transforms-2\files-2.1\7eead14b7f7321b5e79e70a869625545\jetified-library-3.2.11\AndroidManifest.xml:22:9-24:40
+100            android:name="io.nlopez.smartlocation.geofencing.providers.GeofencingGooglePlayServicesProvider$GeofencingService"
+100-->[io.nlopez.smartlocation:library:3.2.11] C:\Users\Gerbil\.gradle\caches\transforms-2\files-2.1\7eead14b7f7321b5e79e70a869625545\jetified-library-3.2.11\AndroidManifest.xml:23:13-127
+101            android:exported="false" />
+101-->[io.nlopez.smartlocation:library:3.2.11] C:\Users\Gerbil\.gradle\caches\transforms-2\files-2.1\7eead14b7f7321b5e79e70a869625545\jetified-library-3.2.11\AndroidManifest.xml:24:13-37
+102        <service
+102-->[io.nlopez.smartlocation:library:3.2.11] C:\Users\Gerbil\.gradle\caches\transforms-2\files-2.1\7eead14b7f7321b5e79e70a869625545\jetified-library-3.2.11\AndroidManifest.xml:25:9-27:40
+103            android:name="io.nlopez.smartlocation.geocoding.providers.AndroidGeocodingProvider$AndroidGeocodingService"
+103-->[io.nlopez.smartlocation:library:3.2.11] C:\Users\Gerbil\.gradle\caches\transforms-2\files-2.1\7eead14b7f7321b5e79e70a869625545\jetified-library-3.2.11\AndroidManifest.xml:26:13-120
+104            android:exported="false" />
+104-->[io.nlopez.smartlocation:library:3.2.11] C:\Users\Gerbil\.gradle\caches\transforms-2\files-2.1\7eead14b7f7321b5e79e70a869625545\jetified-library-3.2.11\AndroidManifest.xml:27:13-37
+105    </application>
+106
+107</manifest>
