@@ -7,8 +7,8 @@
     git checkout NOM_BRANCHE
 
 3 - Déposer l'avancement du projet dans votre branche avec :
-    git commit
-    git push
+    _ git commit
+    _ git push
     Puis commencer à développer votre fonctionnalité à partir du projet commun
     
 4 - Une fois que votre fonctionnalité fonctionne avec le projet commun, fusionnez votre branche avec la branche master avec :
