@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   haut_ecran: {
     flex: 2,
     marginHorizontal: 10,
-    marginVertical: 10,
+    marginVertical: 5,
   },
   bas_ecran: {
     flex: 1,
