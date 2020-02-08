@@ -11,9 +11,9 @@ export default class App extends React.Component {
         </View>
         <View style={styles.bas_ecran}>
           <View style={styles.batterie_boutons}>
-            <Button title='Gauche' onPress={() => {}}/>
+            <Button title='Config' onPress={() => {}}/>
             <Text style={styles.text_batterie}>{'Batterie'}</Text>
-            <Button title='Droite' onPress={() => {}}/>
+            <Button title='Infos Avancées' onPress={() => {}}/>
           </View>
           <Text style={styles.texts}>{'Vitesse'}</Text>
           <Text style={styles.texts}>{'A Propos'}</Text>
