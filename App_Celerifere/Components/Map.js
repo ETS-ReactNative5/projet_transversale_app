@@ -11,6 +11,7 @@ const LONGITUDE_DELTA = 0.009;
 const LATITUDE = 0;
 const LONGITUDE = 0;
 var allowLocation;
+var totalDistance;
 //Geocoder.init("AIzaSyCO7AqtE0nyLSvL9gOdZVPlpuQ-Lq8i-Hs");
 
 async function requestLocationPermission() {
@@ -25,6 +26,10 @@ async function requestLocationPermission() {
   } catch (err) {
     console.warn(err);
   }
+}
+
+export function getTotalDistance(){
+  return totalDistance;
 }
 
 class Map extends React.Component {
@@ -77,6 +82,7 @@ class Map extends React.Component {
               distanceTravelled + this.calcDistance(newCoordinate),
             prevLatLng: newCoordinate
           });
+          totalDistance = this.distanceTravelled;
         },
         error => console.log(error),
         {
