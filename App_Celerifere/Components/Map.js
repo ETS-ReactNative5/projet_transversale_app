@@ -1,5 +1,5 @@
 import React from "react";
-import {StyleSheet,View,Text,TouchableOpacity,Platform,PermissionsAndroid,TextInput} from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity, Platform, PermissionsAndroid, TextInput, Button } from "react-native";
 import MapView, {Marker,AnimatedRegion,Polyline,PROVIDER_GOOGLE} from "react-native-maps";
 import Geolocation from 'react-native-geolocation-service'
 //import MapViewDirections from 'react-native-maps-directions';
@@ -11,7 +11,7 @@ const LONGITUDE_DELTA = 0.009;
 const LATITUDE = 0;
 const LONGITUDE = 0;
 var allowLocation;
-var totalDistance;
+//var totalDistance;
 //Geocoder.init("AIzaSyCO7AqtE0nyLSvL9gOdZVPlpuQ-Lq8i-Hs");
 
 async function requestLocationPermission() {
@@ -28,14 +28,11 @@ async function requestLocationPermission() {
   }
 }
 
-export function getTotalDistance(){
-  return totalDistance;
-}
-
 class Map extends React.Component {
   constructor(props) {
     super(props);
 
+    this.stopRefreshingMap = 0
     this.state = {
       latitude: LATITUDE,
       longitude: LONGITUDE,
@@ -44,8 +41,8 @@ class Map extends React.Component {
       coordinate: new AnimatedRegion({
         latitude: LATITUDE,
         longitude: LONGITUDE,
-        latitudeDelta: 0,
-        longitudeDelta: 0
+        latitudeDelta: LATITUDE_DELTA,
+        longitudeDelta: LONGITUDE_DELTA
       })
     };
   }
@@ -82,7 +79,7 @@ class Map extends React.Component {
               distanceTravelled + this.calcDistance(newCoordinate),
             prevLatLng: newCoordinate
           });
-          totalDistance = this.distanceTravelled;
+          //totalDistance = this.distanceTravelled;
         },
         error => console.log(error),
         {
@@ -99,12 +96,16 @@ class Map extends React.Component {
     Geolocation.clearWatch(this.watchID);
   }
 
-  getMapRegion = () => ({
-    latitude: this.state.latitude,
-    longitude: this.state.longitude,
-    latitudeDelta: LATITUDE_DELTA,
-    longitudeDelta: LONGITUDE_DELTA
-  });
+  getMapRegion = () => {
+    if(this.stopRefreshingMap==0){
+      return({
+        latitude: this.state.latitude,
+        longitude: this.state.longitude,
+        latitudeDelta: LATITUDE_DELTA,
+        longitudeDelta: LONGITUDE_DELTA
+      })
+    }
+  };
 
   calcDistance = newLatLng => {
     const { prevLatLng } = this.state;
@@ -115,12 +116,13 @@ class Map extends React.Component {
     return (
       <View style={styles.container}>
         <MapView
+          ref={ref => this.mapView = ref}
           style={styles.map}
           provider={PROVIDER_GOOGLE}
-          showUserLocation
-          followUserLocation
           loadingEnabled
-          region={this.getMapRegion()}
+          showsMyLocationButton
+          region= {this.getMapRegion()}
+          onRegionChange={() => {this.stopRefreshingMap=1}}
         >
           <Marker.Animated
             ref={marker => {
@@ -135,11 +137,18 @@ class Map extends React.Component {
             placeholder='Destination'
             autoCompleteType= 'street-address'
           />
-          <TouchableOpacity style={styles.bubble}>
-            <Text>
-              {parseFloat(this.state.distanceTravelled).toFixed(2)} km
-            </Text>
-          </TouchableOpacity>
+          <View style={styles.infosBas}>
+            <TouchableOpacity style={styles.bubble}>
+              <Text>
+                {parseFloat(this.state.distanceTravelled).toFixed(2)} km
+              </Text>
+            </TouchableOpacity>
+            <Button
+              title='Moi'
+              onPress={() => {this.stopRefreshingMap=0,
+                              this.mapView.animateToRegion(this.getMapRegion())}}
+            />
+          </View>
         </View>
       </View>
     );
@@ -156,9 +165,10 @@ const styles = StyleSheet.create({
   bubble: {
     backgroundColor: "rgba(255,255,255,0.7)",
     paddingVertical: 10,
+    paddingHorizontal: 10,
     borderRadius: 20,
-    marginHorizontal: 120,
-    alignItems: "center"
+    alignItems: "center",
+    alignSelf: "center"
   },
   items: {
     flex: 1,
@@ -168,11 +178,16 @@ const styles = StyleSheet.create({
   },
   textinput: {
     backgroundColor: "rgba(255,255,255,0.7)",
-    marginLeft: 5,
-    marginRight: 5,
+    marginLeft: 35,
+    marginRight: 35,
     borderColor: 'black',
     borderWidth: 2,
     paddingLeft: 10
+  },
+  infosBas: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginLeft: 110,
   }
 });
 
