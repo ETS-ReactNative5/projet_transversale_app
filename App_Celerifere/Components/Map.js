@@ -1,13 +1,17 @@
 import React from "react";
-import { StyleSheet, View, Text, TouchableOpacity, Platform, PermissionsAndroid, TextInput, Button } from "react-native";
-import MapView, {Marker,AnimatedRegion,Polyline,PROVIDER_GOOGLE} from "react-native-maps";
+import { StyleSheet, View, Text, TouchableOpacity, Platform, PermissionsAndroid, TextInput, Button, Dimensions } from "react-native";
+import MapView, {Marker,AnimatedRegion,PROVIDER_GOOGLE} from "react-native-maps";
 import Geolocation from 'react-native-geolocation-service'
+import MapStyle from './MapStyle';
 //import MapViewDirections from 'react-native-maps-directions';
 //import Geocoder from 'react-native-geocoding';
 import haversine from "haversine";
 
-const LATITUDE_DELTA = 0.009;
-const LONGITUDE_DELTA = 0.009;
+const { width, height } = Dimensions.get('window');
+
+const ASPECT_RATIO = width / height;
+const LATITUDE_DELTA = 0.0922;
+const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const LATITUDE = 0;
 const LONGITUDE = 0;
 var allowLocation;
@@ -32,8 +36,9 @@ class Map extends React.Component {
   constructor(props) {
     super(props);
 
-    this.stopRefreshingMap = 0
     this.state = {
+      mapStyle: [],
+      stopRefreshingMap: 0,
       latitude: LATITUDE,
       longitude: LONGITUDE,
       distanceTravelled: 0,
@@ -97,7 +102,7 @@ class Map extends React.Component {
   }
 
   getMapRegion = () => {
-    if(this.stopRefreshingMap==0){
+    if(this.state.stopRefreshingMap==0){
       return({
         latitude: this.state.latitude,
         longitude: this.state.longitude,
@@ -112,6 +117,13 @@ class Map extends React.Component {
     return haversine(prevLatLng, newLatLng) || 0;
   };
 
+  setMapStyle = () => {
+    if(this.state.mapStyle == MapStyle){
+      this.setState({mapStyle: [null]});
+    }else {this.setState({mapStyle: MapStyle})};
+    console.log(this.state.mapStyle);
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -122,6 +134,7 @@ class Map extends React.Component {
           loadingEnabled
           showsMyLocationButton
           region= {this.getMapRegion()}
+          customMapStyle={this.state.mapStyle}
           onRegionChange={() => {this.stopRefreshingMap=1}}
         >
           <Marker.Animated
@@ -144,9 +157,12 @@ class Map extends React.Component {
               </Text>
             </TouchableOpacity>
             <Button
+              title='Day/Night'
+              onPress={() => {this.setMapStyle()}}
+            />
+            <Button
               title='Moi'
-              onPress={() => {this.stopRefreshingMap=0,
-                              this.mapView.animateToRegion(this.getMapRegion())}}
+              onPress={() => {this.setState({stopRefreshingMap: 0})}}
             />
           </View>
         </View>
@@ -187,7 +203,7 @@ const styles = StyleSheet.create({
   infosBas: {
     flexDirection: "row",
     justifyContent: "space-around",
-    marginLeft: 110,
+    marginLeft: 50,
   }
 });
 
