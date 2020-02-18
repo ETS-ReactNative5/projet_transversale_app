@@ -1,11 +1,12 @@
-import React from "react";
-import { StyleSheet, View, Text, TouchableOpacity, Platform, PermissionsAndroid, TextInput, Button, Dimensions } from "react-native";
-import MapView, {Marker,AnimatedRegion,PROVIDER_GOOGLE} from "react-native-maps";
-import Geolocation from 'react-native-geolocation-service'
-import MapStyle from './MapStyle';
+import React from 'react';
+import { StyleSheet, View, Text, TouchableOpacity, Platform, PermissionsAndroid, TextInput, Button, Dimensions, Switch } from 'react-native';
+import MapView, {Marker,AnimatedRegion,PROVIDER_GOOGLE} from 'react-native-maps';
+import Geolocation from 'react-native-geolocation-service';
+import MapStyle from '../Helpers/MapStyle';
+import AsyncStorage from '@react-native-community/async-storage';
 //import MapViewDirections from 'react-native-maps-directions';
 //import Geocoder from 'react-native-geocoding';
-import haversine from "haversine";
+import haversine from 'haversine';
 
 const { width, height } = Dimensions.get('window');
 
@@ -15,6 +16,7 @@ const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const LATITUDE = 0;
 const LONGITUDE = 0;
 var allowLocation;
+const KEY = '@@KEY';
 //var totalDistance;
 //Geocoder.init("AIzaSyCO7AqtE0nyLSvL9gOdZVPlpuQ-Lq8i-Hs");
 
@@ -37,11 +39,12 @@ class Map extends React.Component {
     super(props);
 
     this.state = {
+      dayNight: 0,
       mapStyle: [],
       stopRefreshingMap: 0,
       latitude: LATITUDE,
       longitude: LONGITUDE,
-      distanceTravelled: 0,
+      distanceTravelled: this._restoreItem(),
       prevLatLng: {},
       coordinate: new AnimatedRegion({
         latitude: LATITUDE,
@@ -50,7 +53,7 @@ class Map extends React.Component {
         longitudeDelta: LONGITUDE_DELTA
       })
     };
-  }
+  };
 
   componentDidMount() {
     const { coordinate } = this.state;
@@ -66,7 +69,7 @@ class Map extends React.Component {
             longitude
           };
 
-          if (Platform.OS === "android") {
+          if (Platform.OS === 'android') {
             if (this.marker) {
               this.marker._component.animateMarkerToCoordinate(
                 newCoordinate,
@@ -81,10 +84,9 @@ class Map extends React.Component {
             latitude,
             longitude,
             distanceTravelled:
-              distanceTravelled + this.calcDistance(newCoordinate),
+              distanceTravelled + this._calcDistance(newCoordinate),
             prevLatLng: newCoordinate
           });
-          //totalDistance = this.distanceTravelled;
         },
         error => console.log(error),
         {
@@ -97,11 +99,15 @@ class Map extends React.Component {
     }
   }
 
+  async componentDidUpdate() {
+    this._saveItem();
+  }
+
   componentWillUnmount() {
     Geolocation.clearWatch(this.watchID);
   }
 
-  getMapRegion = () => {
+  _getMapRegion = () => {
     if(this.state.stopRefreshingMap==0){
       return({
         latitude: this.state.latitude,
@@ -112,30 +118,53 @@ class Map extends React.Component {
     }
   };
 
-  calcDistance = newLatLng => {
+  _calcDistance = newLatLng => {
     const { prevLatLng } = this.state;
     return haversine(prevLatLng, newLatLng) || 0;
   };
 
-  setMapStyle = () => {
+  _setMapStyle = () => {
     if(this.state.mapStyle == MapStyle){
-      this.setState({mapStyle: [null]});
-    }else {this.setState({mapStyle: MapStyle})};
-    console.log(this.state.mapStyle);
+      this.setState({mapStyle: [null], dayNight: false});
+    }else {
+      this.setState({mapStyle: MapStyle, dayNight: true});
+    };
+  };
+
+  _saveItem = async () => {
+    try {
+      await AsyncStorage.setItem(KEY, JSON.stringify(this.state.distanceTravelled));
+    } catch (e) {
+      console.warn(e);
+    }
+  };
+
+  _restoreItem = async () => {
+    let storedItem = {};
+    try {
+      storedItem = await AsyncStorage.getItem(KEY);
+    } catch (e) {
+      console.warn(e);
+    }
+    if(storedItem){
+      this.setState({distanceTravelled: JSON.parse(storedItem)});
+    }else{
+      this.setState({distanceTravelled: 0});
+    }
   };
 
   render() {
+    console.log(this.state.distanceTravelled);
     return (
       <View style={styles.container}>
         <MapView
-          ref={ref => this.mapView = ref}
           style={styles.map}
           provider={PROVIDER_GOOGLE}
           loadingEnabled
           showsMyLocationButton
-          region= {this.getMapRegion()}
+          region= {this._getMapRegion()}
           customMapStyle={this.state.mapStyle}
-          onRegionChange={() => {this.stopRefreshingMap=1}}
+          onRegionChange={() => {this.setState({stopRefreshingMap: 1})}}
         >
           <Marker.Animated
             ref={marker => {
@@ -156,13 +185,21 @@ class Map extends React.Component {
                 {parseFloat(this.state.distanceTravelled).toFixed(2)} km
               </Text>
             </TouchableOpacity>
-            <Button
-              title='Day/Night'
-              onPress={() => {this.setMapStyle()}}
+            <Switch
+              value={this.state.dayNight}
+              onValueChange={() => {this._setMapStyle()}}
             />
             <Button
               title='Moi'
               onPress={() => {this.setState({stopRefreshingMap: 0})}}
+            />
+            <Button
+              title='Save'
+              onPress={() => {this._saveItem()}}
+            />
+            <Button
+              title='Restore'
+              onPress={() => {this._restoreItem()}}
             />
           </View>
         </View>
@@ -179,30 +216,30 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
   },
   bubble: {
-    backgroundColor: "rgba(255,255,255,0.7)",
+    backgroundColor: 'rgba(255,255,255,0.7)',
     paddingVertical: 10,
     paddingHorizontal: 10,
     borderRadius: 20,
-    alignItems: "center",
-    alignSelf: "center"
+    alignItems: 'center',
+    alignSelf: 'center'
   },
   items: {
     flex: 1,
-    flexDirection: "column",
-    justifyContent: "space-between",
+    flexDirection: 'column',
+    justifyContent: 'space-between',
     marginVertical: 5,
   },
   textinput: {
-    backgroundColor: "rgba(255,255,255,0.7)",
-    marginLeft: 35,
-    marginRight: 35,
+    backgroundColor: 'rgba(255,255,255,0.7)',
+    marginLeft: 50,
+    marginRight: 5,
     borderColor: 'black',
     borderWidth: 2,
     paddingLeft: 10
   },
   infosBas: {
-    flexDirection: "row",
-    justifyContent: "space-around",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
     marginLeft: 50,
   }
 });
