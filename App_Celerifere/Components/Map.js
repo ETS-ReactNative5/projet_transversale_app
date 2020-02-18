@@ -193,14 +193,6 @@ class Map extends React.Component {
               title='Moi'
               onPress={() => {this.setState({stopRefreshingMap: 0})}}
             />
-            <Button
-              title='Save'
-              onPress={() => {this._saveItem()}}
-            />
-            <Button
-              title='Restore'
-              onPress={() => {this._restoreItem()}}
-            />
           </View>
         </View>
       </View>
