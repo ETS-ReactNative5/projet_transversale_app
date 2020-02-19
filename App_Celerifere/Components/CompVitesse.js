@@ -7,7 +7,7 @@ import { getVitesse } from './testEnvoi'
 export default class CompVitesse extends Component {
 
   _onLongPressButton() {
-    alert('Apperçu rapide info avancées\n\nVitesse moyenne :\t\t\t\t\t--km/h\nDistance parcourue :\t\t--km')
+    alert('Aperçu rapide info avancées\n\nVitesse moyenne :\t\t\t\t\t--km/h\nDistance parcourue :\t\t--km')
   }
 
 

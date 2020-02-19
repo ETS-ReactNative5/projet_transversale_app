@@ -1,40 +1,42 @@
+//import 'react-native-gesture-handler'
 import React from 'react'
-import Map1 from './Components/Map1'
+import {NavigationContainer} from '@react-navigation/native'
 import { StyleSheet, View, Text, Button} from 'react-native'
-import CompVitesse from './Components/CompVitesse'
-import CompBatterie from './Components/CompBatterie'
+import Localisation from './Components/Localisation'
+import InfoAvanc from './Components/InfoAvanc'
+import App from './App'
 
-export default class App extends React.Component {
-
-  render() {
-    return (
+export default class Config extends React.Component {
+  render()   return (
       <View style={styles.main_container}>
         <View style={styles.haut_ecran}>
-          <Map1/>
+      <Text style={styles.text_batterie}>{'A REMPLIR'}</Text>
         </View>
+
         <View style={styles.bas_ecran}>
           <View style={styles.batterie_boutons}>
-            <Button title='<-' onPress={() => {}}/>
-            <CompVitesse/>
-            <Button title='->' onPress={() => {}}/>
+            <Button title='Localisation' onPress={() => {navigation.navigate('Localisation')}}/>
+            <Text style={styles.text_batterie}>{'Batterie'}</Text>
+            <Button title='Accueil' onPress={() => {navigation.navigate('App')}}/>
           </View>
-          <CompBatterie style={styles.CompBatterie}/>
+          <Text style={styles.texts}>{'Vitesse'}</Text>
           <Text style={styles.texts}>{'A Propos'}</Text>
         </View>
       </View>
     )
+
+    )
   }
 }
-
 const styles = StyleSheet.create({
   main_container: {
     flex: 1,
-    backgroundColor: '#909090'
+    backgroundColor: '#99CCCC'
   },
   haut_ecran: {
     flex: 2,
     marginHorizontal: 10,
-    marginVertical: 5,
+    marginVertical: 10,
   },
   bas_ecran: {
     flex: 1,
@@ -56,7 +58,6 @@ const styles = StyleSheet.create({
     textAlignVertical: 'center',
     marginHorizontal: 50,
   },
-
   texts: {
     flex: 1,
     paddingHorizontal: 25,
@@ -74,11 +75,5 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     textAlign: 'center',
     textAlignVertical: 'center'
-  },
-  boutonsGD: {
-    height: 30,
-    width: 30,
-    borderRadius: 30,
-
   }
 })

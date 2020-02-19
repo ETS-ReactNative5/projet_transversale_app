@@ -5,12 +5,12 @@ import { Platform, StyleSheet, Text, TouchableHighlight, TouchableOpacity, Touch
 
 //envoie d'une donnée de vitesse en char
 export function getVitesse(){
-  return '25';
+  return '25'; //vitesse exprimée km/h
 }
 
 //envoie d'une donnée de batterie en int
 export function getBatterie(){
-  return 30;
+  return 30; //niveau exprimé en %
 }
 
 export default class testEnvoi extends Component {

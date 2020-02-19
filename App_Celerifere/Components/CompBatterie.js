@@ -7,7 +7,7 @@ import { getBatterie } from './testEnvoi.js'
 export default class CompBatterie extends Component {
 
   _onLongPressButton() {
-    alert('Apperçu rapide info avancées\n\nEstimation Batterie :\t\t\t\t--km\nDistance restante :\t\t\t\t\t--km')
+    alert('Aperçu rapide info avancées\n\nEstimation Batterie :\t\t\t\t--km\nDistance restante :\t\t\t\t\t--km')
   }
 
 
@@ -44,17 +44,17 @@ const styles2 = StyleSheet.create({
 
   },
   niveau: {
-    flex: 4,
+    flex: 95,
     height: 55,
     backgroundColor: '#50FF50',
-    borderRadius:10
+    borderRadius:5
   },
 
   vide: {
-    flex: 2,
+    flex: 5,
     height: 55,
     backgroundColor: '#505050',
-    borderRadius:10
+    borderRadius:5
 
   }
 });
