@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Platform, PermissionsAndroid, TextInput, Button, Dimensions, Switch } from 'react-native';
 import MapView, {Marker,AnimatedRegion,PROVIDER_GOOGLE} from 'react-native-maps';
 import Geolocation from 'react-native-geolocation-service';
-import MapStyle from '../Helpers/MapStyle';
+import DarkMap from '../Helpers/DarkMap';
 import AsyncStorage from '@react-native-community/async-storage';
 //import MapViewDirections from 'react-native-maps-directions';
 //import Geocoder from 'react-native-geocoding';
@@ -15,8 +15,9 @@ const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const LATITUDE = 0;
 const LONGITUDE = 0;
+const KEY = 'KEY';
 var allowLocation;
-const KEY = '@@KEY';
+var allowStorage;
 //var totalDistance;
 //Geocoder.init("AIzaSyCO7AqtE0nyLSvL9gOdZVPlpuQ-Lq8i-Hs");
 
@@ -28,6 +29,20 @@ async function requestLocationPermission() {
       allowLocation = true;
     } else {
       console.log('Location permission denied');
+    }
+  } catch (err) {
+    console.warn(err);
+  }
+}
+
+async function requestStoragePermission() {
+  try {
+    const granted = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE);
+    if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+      console.log('You can use the storage of the phone');
+      allowStorage = true;
+    } else {
+      console.log('Storage permission denied');
     }
   } catch (err) {
     console.warn(err);
@@ -56,8 +71,21 @@ class Map extends React.Component {
   };
 
   componentDidMount() {
+    requestLocationPermission();
+    requestStoragePermission();
+    this._followPosition();
+  }
+
+  componentDidUpdate() {
+    this._saveItem();
+  }
+
+  componentWillUnmount() {
+    Geolocation.clearWatch(this.watchID);
+  }
+
+  _followPosition = () => {
     const { coordinate } = this.state;
-    requestLocationPermission()
     if(allowLocation = true){
       this.watchID = Geolocation.watchPosition(
         position => {
@@ -99,14 +127,6 @@ class Map extends React.Component {
     }
   }
 
-  async componentDidUpdate() {
-    this._saveItem();
-  }
-
-  componentWillUnmount() {
-    Geolocation.clearWatch(this.watchID);
-  }
-
   _getMapRegion = () => {
     if(this.state.stopRefreshingMap==0){
       return({
@@ -124,32 +144,36 @@ class Map extends React.Component {
   };
 
   _setMapStyle = () => {
-    if(this.state.mapStyle == MapStyle){
+    if(this.state.mapStyle == DarkMap){
       this.setState({mapStyle: [null], dayNight: false});
     }else {
-      this.setState({mapStyle: MapStyle, dayNight: true});
+      this.setState({mapStyle: DarkMap, dayNight: true});
     };
   };
 
   _saveItem = async () => {
-    try {
-      await AsyncStorage.setItem(KEY, JSON.stringify(this.state.distanceTravelled));
-    } catch (e) {
-      console.warn(e);
+    if(allowStorage = true){
+      try {
+        await AsyncStorage.setItem(KEY, JSON.stringify(this.state.distanceTravelled));
+      } catch (e) {
+        console.warn(e);
+      }
     }
   };
 
   _restoreItem = async () => {
     let storedItem = {};
-    try {
-      storedItem = await AsyncStorage.getItem(KEY);
-    } catch (e) {
-      console.warn(e);
-    }
-    if(storedItem){
-      this.setState({distanceTravelled: JSON.parse(storedItem)});
-    }else{
-      this.setState({distanceTravelled: 0});
+    if(allowStorage = true){
+      try {
+        storedItem = await AsyncStorage.getItem(KEY);
+      } catch (e) {
+        console.warn(e);
+      }
+      if(storedItem){
+        this.setState({distanceTravelled: JSON.parse(storedItem)});
+      }else{
+        this.setState({distanceTravelled: 0});
+      }
     }
   };
 
