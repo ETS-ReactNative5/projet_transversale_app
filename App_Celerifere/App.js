@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#909090'
   },
   haut_ecran: {
-    flex: 2,
+    flex: 3,
     marginHorizontal: 10,
     marginVertical: 5,
   },
