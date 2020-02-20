@@ -17,37 +17,9 @@ const LATITUDE = 0;
 const LONGITUDE = 0;
 const KEY = 'KEY';
 var allowLocation;
-var allowStorage;
-//var totalDistance;
 //Geocoder.init("AIzaSyCO7AqtE0nyLSvL9gOdZVPlpuQ-Lq8i-Hs");
 
-async function requestLocationPermission() {
-  try {
-    const granted = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION);
-    if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-      console.log('You can use the GPS');
-      allowLocation = true;
-    } else {
-      console.log('Location permission denied');
-    }
-  } catch (err) {
-    console.warn(err);
-  }
-}
 
-async function requestStoragePermission() {
-  try {
-    const granted = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE);
-    if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-      console.log('You can use the storage of the phone');
-      allowStorage = true;
-    } else {
-      console.log('Storage permission denied');
-    }
-  } catch (err) {
-    console.warn(err);
-  }
-}
 
 class Map extends React.Component {
   constructor(props) {
@@ -70,9 +42,21 @@ class Map extends React.Component {
     };
   };
 
+  async _requestLocationPermission() {
+    try {
+      const granted = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION);
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log('You can use the GPS');
+      } else {
+        console.log('Location permission denied');
+      }
+    } catch (err) {
+      console.warn(err);
+    }
+  }
+
   componentDidMount() {
-    requestLocationPermission();
-    requestStoragePermission();
+    this._requestLocationPermission();
     this._followPosition();
   }
 
@@ -84,9 +68,8 @@ class Map extends React.Component {
     Geolocation.clearWatch(this.watchID);
   }
 
-  _followPosition = () => {
+  _followPosition(){
     const { coordinate } = this.state;
-    if(allowLocation = true){
       this.watchID = Geolocation.watchPosition(
         position => {
           const { distanceTravelled } = this.state;
@@ -107,7 +90,6 @@ class Map extends React.Component {
           } else {
             coordinate.timing(newCoordinate).start();
           }
-
           this.setState({
             latitude,
             longitude,
@@ -124,18 +106,18 @@ class Map extends React.Component {
           distanceFilter: 10
         }
       );
-    }
+
   }
 
-  _getMapRegion = () => {
-    if(this.state.stopRefreshingMap==0){
-      return({
-        latitude: this.state.latitude,
-        longitude: this.state.longitude,
-        latitudeDelta: LATITUDE_DELTA,
-        longitudeDelta: LONGITUDE_DELTA
-      })
-    }
+  _getMapRegion(){
+      if(this.state.stopRefreshingMap==0){
+        return({
+          latitude: this.state.latitude,
+          longitude: this.state.longitude,
+          latitudeDelta: LATITUDE_DELTA,
+          longitudeDelta: LONGITUDE_DELTA
+        })
+      }
   };
 
   _calcDistance = newLatLng => {
@@ -143,7 +125,7 @@ class Map extends React.Component {
     return haversine(prevLatLng, newLatLng) || 0;
   };
 
-  _setMapStyle = () => {
+  _setMapStyle(){
     if(this.state.mapStyle == DarkMap){
       this.setState({mapStyle: [null], dayNight: false});
     }else {
@@ -151,34 +133,29 @@ class Map extends React.Component {
     };
   };
 
-  _saveItem = async () => {
-    if(allowStorage = true){
-      try {
-        await AsyncStorage.setItem(KEY, JSON.stringify(this.state.distanceTravelled));
-      } catch (e) {
-        console.warn(e);
-      }
+  async _saveItem(){
+    try {
+      await AsyncStorage.setItem(KEY, JSON.stringify(this.state.distanceTravelled));
+    } catch (e) {
+      console.warn(e);
     }
   };
 
-  _restoreItem = async () => {
+  async _restoreItem(){
     let storedItem = {};
-    if(allowStorage = true){
-      try {
-        storedItem = await AsyncStorage.getItem(KEY);
-      } catch (e) {
-        console.warn(e);
-      }
-      if(storedItem){
-        this.setState({distanceTravelled: JSON.parse(storedItem)});
-      }else{
-        this.setState({distanceTravelled: 0});
-      }
+    try {
+      storedItem = await AsyncStorage.getItem(KEY);
+    } catch (e) {
+      console.warn(e);
+    }
+    if(storedItem){
+      this.setState({distanceTravelled: JSON.parse(storedItem)});
+    }else{
+      this.setState({distanceTravelled: 0});
     }
   };
 
   render() {
-    console.log(this.state.distanceTravelled);
     return (
       <View style={styles.container}>
         <MapView
