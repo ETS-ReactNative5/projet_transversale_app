@@ -18,7 +18,7 @@ export default class InfoAvanc extends React.Component {
           <View style={styles.batterie_boutons}>
             <Button title='Accueil' onPress={() => {navigation.navigate('App')}}/>
             <Text style={styles.text_batterie}>{'Batterie'}</Text>
-            <Button title='Localisation' onPress={() => {navigation.navigate('Localisation')}}/>
+            <Button title='Loc' onPress={() => {navigation.navigate('Localisation')}}/>
           </View>
           <Text style={styles.texts}>{'Vitesse'}</Text>
           <Text style={styles.texts}>{'A Propos'}</Text>

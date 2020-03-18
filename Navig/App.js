@@ -19,7 +19,7 @@ export default class App extends React.Component {
           <View style={styles.batterie_boutons}>
             <Button title='Config' onPress={() => {navigation.navigate('Config')}}/>
             <Text style={styles.text_batterie}>{'Batterie'}</Text>
-            <Button title='Infos Avancées' onPress={() => {navigation.navigate('InfoAvanc')}}/>
+            <Button title='Infav' onPress={() => {navigation.navigate('InfoAvanc')}}/>
           </View>
           <Text style={styles.texts}>{'Vitesse'}</Text>
           <Text style={styles.texts}>{'A Propos'}</Text>

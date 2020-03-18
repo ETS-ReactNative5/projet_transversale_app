@@ -15,7 +15,7 @@ export default class Config extends React.Component {
 
         <View style={styles.bas_ecran}>
           <View style={styles.batterie_boutons}>
-            <Button title='Localisation' onPress={() => {navigation.navigate('Localisation')}}/>
+            <Button title='Loc' onPress={() => {navigation.navigate('Localisation')}}/>
             <Text style={styles.text_batterie}>{'Batterie'}</Text>
             <Button title='Accueil' onPress={() => {navigation.navigate('App')}}/>
           </View>

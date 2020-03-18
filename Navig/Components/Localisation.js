@@ -17,9 +17,9 @@ export default class Localisation extends React.Component {
         </View>
         <View style={styles.bas_ecran}>
           <View style={styles.batterie_boutons}>
-            <Button title='Infos Avancées' onPress={() => {navigation.navigate('InfoAvanc')}}/>
+            <Button title='Infav' onPress={() => {navigation.navigate('InfoAvanc')}}/>
             <Text style={styles.text_batterie}>{'Batterie'}</Text>
-            <Button title='Réglages' onPress={() => navigation.navigate('Config')}/>
+            <Button title='Rég' onPress={() => navigation.navigate('Config')}/>
           </View>
           <Text style={styles.texts}>{'Vitesse'}</Text>
           <Text style={styles.texts}>{'A Propos'}</Text>
