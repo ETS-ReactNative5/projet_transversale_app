@@ -40,9 +40,9 @@ const styles1 = StyleSheet.create({
     height: 80,
     //alignItems: 'center',
     backgroundColor: '#808097',
-    borderColor: '#000000',
+    borderColor: '#808097',
     borderWidth: 2,
-    borderRadius:30
+    borderRadius:5
 
   },
   buttonText1: {

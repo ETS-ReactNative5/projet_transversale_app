@@ -1,5 +1,5 @@
 import React from 'react'
-import Map1 from './Components/Map1'
+import Map from './Components/Map'
 import { StyleSheet, View, Text, Button} from 'react-native'
 import CompVitesse from './Components/CompVitesse'
 import CompBatterie from './Components/CompBatterie'
@@ -10,7 +10,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.main_container}>
         <View style={styles.haut_ecran}>
-          <Map1/>
+          <Map/>
         </View>
         <View style={styles.bas_ecran}>
           <View style={styles.batterie_boutons}>
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#909090'
   },
   haut_ecran: {
-    flex: 3,
+    flex: 2,
     marginHorizontal: 10,
     marginVertical: 5,
   },

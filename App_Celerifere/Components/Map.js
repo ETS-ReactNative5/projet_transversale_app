@@ -223,8 +223,8 @@ const styles = StyleSheet.create({
   },
   textinput: {
     backgroundColor: 'rgba(255,255,255,0.7)',
-    marginLeft: 50,
-    marginRight: 5,
+    marginLeft: 28,
+    marginRight: 27,
     borderColor: 'black',
     borderWidth: 2,
     paddingLeft: 10

@@ -5,7 +5,8 @@ import { Platform, StyleSheet, Text, TouchableHighlight, TouchableOpacity, Touch
 
 //envoie d'une donnée de vitesse en char
 export function getVitesse(){
-  return '25'; //vitesse exprimée km/h
+
+  return '0'; //vitesse exprimée km/h
 }
 
 //envoie d'une donnée de batterie en int

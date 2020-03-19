@@ -38,23 +38,23 @@ const styles2 = StyleSheet.create({
     width: 200,
     height: 80,
     backgroundColor: '#808097',
-    borderColor: '#000000',
+    borderColor: '#808097',
     borderWidth: 2,
-    borderRadius:30
+    borderRadius:5
 
   },
   niveau: {
     flex: 95,
     height: 55,
     backgroundColor: '#50FF50',
-    borderRadius:5
+    borderRadius:1
   },
 
   vide: {
     flex: 5,
     height: 55,
     backgroundColor: '#505050',
-    borderRadius:5
+    borderRadius:1
 
   }
 });
