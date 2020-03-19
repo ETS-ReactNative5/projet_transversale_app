@@ -1,4 +1,4 @@
-Celerifere_test2/node_modules/**/*
-Celerifere_test2/.expo/*
+App_Celerifere/node_modules/**/*
+App_Celerifere/.expo/*
 npm-debug.*
 .idea
