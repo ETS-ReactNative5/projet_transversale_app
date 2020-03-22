@@ -1,4 +1,3 @@
-import 'react-native-gesture-handler'
 import React from 'react'
 import {NavigationContainer} from '@react-navigation/native'
 import { StyleSheet, View, Text, Button} from 'react-native'
@@ -7,7 +6,7 @@ import InfoAvanc from './Components/InfoAvanc'
 import App from './App'
 
 export default class Config extends React.Component {
-  render()   return (
+  render()  { return (
       <View style={styles.main_container}>
         <View style={styles.haut_ecran}>
       <Text style={styles.text_batterie}>{'A REMPLIR'}</Text>
@@ -23,8 +22,6 @@ export default class Config extends React.Component {
           <Text style={styles.texts}>{'A Propos'}</Text>
         </View>
       </View>
-    )
-
     )
   }
 }

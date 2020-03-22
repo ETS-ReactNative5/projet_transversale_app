@@ -2,6 +2,7 @@ import React from 'react'
 import {NavigationContainer} from '@react-navigation/native'
 import { StyleSheet, View, Text, Button, ScrollView} from 'react-native'
 import Localisation from './Components/Localisation'
+import Config from './Components/Config'
 import App from './App'
 export default class InfoAvanc extends React.Component {
   render() {
@@ -23,8 +24,6 @@ export default class InfoAvanc extends React.Component {
           <Text style={styles.texts}>{'A Propos'}</Text>
         </View>
       </View>
-    )
-
     )
   }
 }
