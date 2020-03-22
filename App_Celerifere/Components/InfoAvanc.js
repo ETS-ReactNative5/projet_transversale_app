@@ -1,10 +1,14 @@
 //import 'react-native-gesture-handler'
-import React from 'react'
+import React, { Component } from 'react';
 import {NavigationContainer} from '@react-navigation/native'
 import { StyleSheet, View, Text, Button, ScrollView} from 'react-native'
-import Localisation from './Components/Localisation'
-import App from './App'
-export default class InfoAvanc extends React.Component {
+import Localisation from './Localisation'
+import App from '../App'
+
+import CompVitesse from './CompVitesse'
+import CompBatterie from './CompBatterie'
+
+export default class InfoAvanc extends Component {
   render() {
     return (
       <View style={styles.main_container}>
@@ -17,15 +21,13 @@ export default class InfoAvanc extends React.Component {
         <View style={styles.bas_ecran}>
           <View style={styles.batterie_boutons}>
             <Button title='Accueil' onPress={() => {navigation.navigate('App')}}/>
-            <Text style={styles.text_batterie}>{'Batterie'}</Text>
+            <CompVitesse/>
             <Button title='Localisation' onPress={() => {navigation.navigate('Localisation')}}/>
           </View>
           <Text style={styles.texts}>{'Vitesse'}</Text>
           <Text style={styles.texts}>{'A Propos'}</Text>
         </View>
       </View>
-    )
-
     )
   }
 }

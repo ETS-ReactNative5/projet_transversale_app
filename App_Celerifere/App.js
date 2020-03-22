@@ -3,9 +3,9 @@ import 'react-native-gesture-handler'
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
 import Map from './Components/Map'
-import Config from './Components/Config'
-import InfoAvanc from './Components/InfoAvanc'
-import Localisation from './Components/Localisation'
+import Config from './Components/Config.js'
+import InfoAvanc from './Components/InfoAvanc.js'
+import Localisation from './Components/Localisation.js'
 import { StyleSheet, View, Text, Button} from 'react-native'
 import CompVitesse from './Components/CompVitesse'
 import CompBatterie from './Components/CompBatterie'
@@ -21,7 +21,7 @@ export default class App extends React.Component {
           <View style={styles.batterie_boutons}>
             <Button title='Config' onPress={() => {navigation.navigate('Config')}}/>
             <CompVitesse/>
-            <Button title='Infav' onPress={() => {navigation.navigate('InfoAvanc')}}/>
+            <Button title='Infos' onPress={() => {navigation.navigate('InfoAvanc')}}/>
           </View>
           <CompBatterie style={styles.CompBatterie}/>
           <Text style={styles.texts}>{'A Propos'}</Text>
@@ -87,10 +87,10 @@ function MyStack() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen   component={App} />
-        <Stack.Screen component={Config}  />
-        <Stack.Screen component={Localisation}  />
-        <Stack.Screen component={InfoAvanc}  />
+        <Stack.Screen name="Acceuil" component={App} />
+        <Stack.Screen name="Reglage" component={Config}  />
+        <Stack.Screen name="Navigation" component={Localisation}  />
+        <Stack.Screen name="Info" component={InfoAvanc}  />
       </Stack.Navigator>
     </NavigationContainer>
   );
