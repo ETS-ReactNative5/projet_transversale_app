@@ -7,7 +7,8 @@ import InfoAvanc from './Components/InfoAvanc'
 import App from './App'
 
 export default class Config extends React.Component {
-  render()   return (
+  render()  {
+  return (
       <View style={styles.main_container}>
         <View style={styles.haut_ecran}>
       <Text style={styles.text_batterie}>{'A REMPLIR'}</Text>

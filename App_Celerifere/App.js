@@ -87,11 +87,13 @@ function MyStack() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen  name="Accueil"  component={App}}  />
-        <Stack.Screen  name="Réglages"  component={Config}}  />
-        <Stack.Screen  name="Localisation"  component={Localisation}}  />
-        <Stack.Screen  name="Infos Avancées"  component={InfoAvanc}}  />
+        <Stack.Screen   component={App} />
+        <Stack.Screen component={Config}  />
+        <Stack.Screen component={Localisation}  />
+        <Stack.Screen component={InfoAvanc}  />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
+
+//<Stack.Screen  /*name="Accueil"*/  component={App}}  />
